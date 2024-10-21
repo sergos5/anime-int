@@ -13,17 +13,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" /> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <script src="./js/preloder.js" defer></script>
-    
+    <script src="./js/preloder.js" defer></script>    
+    <script src="./js/bg-image.js" defer></script>
     <script src="./js/modal.js" defer></script>    
     <script src="./js/scrool.js" defer></script>
-    <script src="./js/bg-image.js" defer></script>
+    <script src="./js/slider.js" defer></script>
 </head>
 
 <body>
@@ -111,7 +114,9 @@
                     </div>
                 </div>
 
-                <div class="hero__slider-pagination swiper-pagination"></div>
+                <div class="hero__slider-pagination swiper-pagination">
+                    <span></span>
+                </div>
                 <div class="hero__slider-arrow arrow__next swiper-button-next">
                     <span class="arrow_carrot-right"></span>
                 </div>
@@ -638,6 +643,7 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 
 </html>
