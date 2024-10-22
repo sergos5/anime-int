@@ -1,5 +1,5 @@
 const slider = function() {
-    
+    /* swiper-slider */
     const swiper = new Swiper('.swiper', {
         // Optional parameters
         //direction: 'vertical',
@@ -19,7 +19,9 @@ const slider = function() {
             delay: 2500,
             disableOnInteraction: false,
         },    
-    });          
+    });
+
+
 }
 
 slider()
