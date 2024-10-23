@@ -2,7 +2,7 @@ const mainData = ()=> {
 
     const renderGanreList = (ganres) => {
         const dropdownBlock = document.querySelector('.header__menu .dropdown')
-        dropdownBlock.innerHTML = ''
+        //dropdownBlock.innerHTML = ''
         ganres.forEach(ganre => {
             dropdownBlock.insertAdjacentHTML('beforeend', `
                 <li><a href="./categories.html?ganre=${ganre}">${ganre}</a></li>
@@ -12,8 +12,7 @@ const mainData = ()=> {
 
     const renderAnimeList = (arrAnime, ganres) => {
         const wrapper = document.querySelector('.product .col-lg-8')
-        wrapper.innerHTML = ''
-
+        //wrapper.innerHTML = ''
         ganres.forEach(ganre => {
             const productBlock = document.createElement('div')
             const listBlock = document.createElement('div')      
@@ -73,7 +72,7 @@ const mainData = ()=> {
 
     const renderTopViews = (arrTopViews) => {
         const wrapper = document.querySelector('.filter__gallery')
-        wrapper.innerHTML=''
+        //wrapper.innerHTML=''
         arrTopViews.forEach(item => {   
             wrapper.insertAdjacentHTML('beforeend', `
                 <div class="product__sidebar__view__item set-bg mix"
@@ -91,9 +90,7 @@ const mainData = ()=> {
     }
 
     fetch('./db.json')
-        .then((response)=> {
-            return response.json()
-        })
+        .then((response)=> response.json())
         .then((data)=> {
             const ganres = new Set()
                       
