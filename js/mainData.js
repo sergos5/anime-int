@@ -1,5 +1,15 @@
 const mainData = ()=> {
 
+    const renderGanreList = (ganres) => {
+        const dropdownBlock = document.querySelector('.header__menu .dropdown')
+        dropdownBlock.innerHTML = ''
+        ganres.forEach(ganre => {
+            dropdownBlock.insertAdjacentHTML('beforeend', `
+                <li><a href="./categories.html?ganre=${ganre}">${ganre}</a></li>
+            `)
+        })
+    }
+
     const renderAnimeList = (arrAnime, ganres) => {
         const wrapper = document.querySelector('.product .col-lg-8')
         wrapper.innerHTML = ''
@@ -21,7 +31,7 @@ const mainData = ()=> {
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="btn__all">
-                            <a href="/categories.html" class="primary-btn">View All <span class="arrow_right"></span></a>
+                            <a href="/categories.html?ganre=${ganre}" class="primary-btn">View All <span class="arrow_right"></span></a>
                         </div>
                     </div>
                 </div>
@@ -36,7 +46,7 @@ const mainData = ()=> {
                     `)
                 })
                 
-                listBlock.insertAdjacentHTML('afterbegin', `
+                listBlock.insertAdjacentHTML('beforeend', `
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="${item.image}">
@@ -45,7 +55,7 @@ const mainData = ()=> {
                             </div>
                             <div class="product__item__text">
                                 ${tagsBlock.outerHTML}
-                                <h5><a href="/anime-details.html">${item.title}</a></h5>
+                                <h5><a href="/anime-details.html?itemId=${item.id}">${item.title}</a></h5>
                             </div>
                         </div>
                     </div>
@@ -70,7 +80,7 @@ const mainData = ()=> {
                     data-setbg="${item.image}">
                     <div class="ep"> ${item.rating} / 10</div>
                     <div class="view"><i class="fa fa-eye"></i> ${item.views}</div>
-                    <h5><a href="/anime-details.html">${item.title}</a></h5>
+                    <h5><a href="/anime-details.html?itemId=${item.id}">${item.title}</a></h5>
                 </div>`     
             );    
         })
@@ -90,10 +100,9 @@ const mainData = ()=> {
             data.anime.forEach(item => {
                 ganres.add(item.ganre)
             })
-
-            renderAnimeList(data.anime, ganres);
             renderTopViews(data.anime.sort((a,b) => b.views - a.views).slice(0,5)); 
-                        
+            renderAnimeList(data.anime, ganres);
+            renderGanreList(ganres)                               
         })     
 }
 
