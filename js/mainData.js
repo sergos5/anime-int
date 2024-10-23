@@ -1,11 +1,15 @@
 const mainData = ()=> {
 
+    const renderAnimeList = (arrAnime, ganres) => {
+        console.log(ganres)
+        console.log(arrAnime);
+        
+    }
+
     const renderTopViews = (arrTopViews) => {
         const wrapper = document.querySelector('.filter__gallery')
         wrapper.innerHTML=''
         arrTopViews.forEach(item => {   
-            console.log(item);
-            
             wrapper.insertAdjacentHTML('beforeend', `
                 <div class="product__sidebar__view__item set-bg mix"
                     data-setbg="${item.image}">
@@ -19,7 +23,6 @@ const mainData = ()=> {
         wrapper.querySelectorAll(".set-bg").forEach((item)=> {
             item.style.backgroundImage = `url(${item.dataset.setbg})`
         }) 
-
     }
 
     fetch('./db.json')
@@ -27,11 +30,16 @@ const mainData = ()=> {
             return response.json()
         })
         .then((data)=> {
-            renderTopViews(data.anime.sort((a,b) => b.views - a.views).slice(0,5));  
-            
-            
-        }) 
-    
+            const ganres = new Set()
+                      
+            data.anime.forEach(item => {
+                ganres.add(item.ganre)
+            })
+
+            renderAnimeList(data.anime, ganres);
+            renderTopViews(data.anime.sort((a,b) => b.views - a.views).slice(0,5)); 
+                        
+        })     
 }
 
 mainData()
