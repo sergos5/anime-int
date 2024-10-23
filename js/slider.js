@@ -1,4 +1,4 @@
-const slider = function() {
+const slider = () => {
     /* swiper-slider */
     const swiper = new Swiper('.swiper', {
         // Optional parameters

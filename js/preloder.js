@@ -1,4 +1,4 @@
-const preloder = function(){
+const preloder = ()=>{
     const preloder = document.querySelector('.preloder')
 
     preloder.classList.add("active")

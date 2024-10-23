@@ -1,4 +1,4 @@
-const modal = function(){
+const modal = ()=> {
     const modal = document.querySelector('.search-model')
     const modalBtn = document.querySelector('.icon_search')
     const closeBtn = modal.querySelector('.search-close-switch')
