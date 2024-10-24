@@ -1,5 +1,7 @@
 const categoriesData = ()=> {
 
+    const preloder = document.querySelector('.preloder')
+
     const renderGanreList = (ganres) => {
         const dropdownBlock = document.querySelector('.header__menu .dropdown')
         //dropdownBlock.innerHTML = ''
@@ -67,7 +69,11 @@ const categoriesData = ()=> {
             wrapper.querySelectorAll(".set-bg").forEach((item)=> {
                 item.style.backgroundImage = `url(${item.dataset.setbg})`
             })
-        })        
+        }) 
+        
+        setTimeout(()=> {
+            preloder.classList.remove("active")
+        }, 500)
     }
 
     const renderTopViews = (arrTopViews) => {
