@@ -16,7 +16,7 @@ const categoriesData = ()=> {
         ganres.forEach(ganre => {
             const productBlock = document.createElement('div')
             const listBlock = document.createElement('div')      
-            const list = arrAnime.filter(item => item.ganre === ganre)
+            const list = arrAnime.filter(item => item.tags.includes(ganre))
                
             listBlock.classList.add('row')
             
@@ -93,12 +93,20 @@ const categoriesData = ()=> {
         .then((response)=> response.json())
         .then((data)=> {
             const ganres = new Set()
-                      
+            const ganreParams = new URLSearchParams(window.location.search).get('ganre')
+                                
             data.anime.forEach(item => {
                 ganres.add(item.ganre)
             })
+            
             renderTopViews(data.anime.sort((a,b) => b.views - a.views).slice(0,5)); 
-            renderAnimeList(data.anime, ganres);
+            if(ganreParams) {
+                renderAnimeList(data.anime, [ganreParams])
+            } else {
+               renderAnimeList(data.anime, ganres)
+            }
+
+            
             renderGanreList(ganres)                               
         })     
 }
